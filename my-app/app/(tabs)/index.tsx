@@ -1,5 +1,8 @@
 import React, { useRef, useEffect } from 'react';
 import { StyleSheet, View, Text, Animated, Easing } from 'react-native';
+import { Link } from 'expo-router';
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
 
 export default function HelloWorldScreen() {
   const spinValue = useRef(new Animated.Value(0)).current;
@@ -48,6 +51,12 @@ export default function HelloWorldScreen() {
 
   return (
     <View style={styles.container}>
+      <ThemedView style={styles.titleContainer}>
+        <ThemedText type="title">Welcome!</ThemedText>
+        <Link href="/neon-test" style={{ marginTop: 20 }}>
+          <ThemedText type="link">Try 80s Neon Background</ThemedText>
+        </Link>
+      </ThemedView>
       <Text style={styles.helloText}>Hello World</Text>
       <Animated.View
         style={[
@@ -65,6 +74,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#FFFFFF',
+  },
+  titleContainer: {
+    marginBottom: 20,
   },
   helloText: {
     fontSize: 24,
